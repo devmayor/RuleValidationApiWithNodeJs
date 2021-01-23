@@ -1,22 +1,12 @@
-const Joi = require('joi');
 const express = require('express');
 const app = express();
 
+const { home } = require('./api/home');
+const {validate} = require('./api/validate');
 app.use(express.json());
 
-app.get('/', (req,res) => {
-    res.json({
-        message: 'My Rule-Validation API',
-        status: 'success',
-        data: {
-            name: `Babatunde Afolabi`,
-            github: `@Dontunee`,
-            email: `t_afolabi@yahoo.com`,
-            mobile: `09033176887`,
-            twitter: `@dontune`
-        }
-    });
-});
+app.get('/', home);
+app.post('/validate-rule', validate);
 
 
 //configure PORT
